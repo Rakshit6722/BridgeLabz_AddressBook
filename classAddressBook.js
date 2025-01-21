@@ -13,7 +13,7 @@ class AddressBook {
     }
     addContact(contact) {
         this.addressBook.push(contact);
-        return "Contact added successfully";
+        console.log("Contact added successfully\n");
     }
     editContact(firstname) {
         let foundObj = this.addressBook.filter(item => item.firstname === firstname);
@@ -48,6 +48,9 @@ class AddressBook {
         else {
             console.log("Contact not found!!");
         }
+    }
+    deleteContact(firstname) {
+        this.addressBook = this.addressBook.filter(item => item.firstname !== firstname);
     }
 }
 exports.default = AddressBook;

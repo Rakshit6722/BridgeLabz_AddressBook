@@ -10,3 +10,6 @@ Contact to Address Book
 existing contact 
 person using their 
 name
+-UC4: Ability to delete a 
+person using 
+person's name
