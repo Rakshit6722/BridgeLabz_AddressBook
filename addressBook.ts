@@ -28,16 +28,40 @@ const createContact = ():Contact => {
     return newContact
 }
 
+const editUsingName = () => {
+    const name: string = readLineSync.question("Find contact by entering first name")
+    return name
+}
+
 const addressBook = () => {
 
     let address_book = new AddressBook()
 
     console.log("<-------------ADDRESS BOOK--------------->")
 
-    console.log("Operations:")
-    console.log("1: Add Contact")
+    while(true){
+        console.log("Operations:")
+
+    let opertaionsStr = `1: Add Contact \n2: Edit Contact \n3: Exit`
+
+    console.log(opertaionsStr)
 
     const operation: number = parseInt(readLineSync.question("Choose:"))
+
+    switch(operation){
+        case 1:
+            address_book.addContact(createContact())
+            break
+        case 2:
+            address_book.editContact(editUsingName())
+            console.log(address_book.getAllContacts())
+            break
+        case 3:
+            console.log("Exiting...")
+            return
+        default:
+    }
+    }
 }
 
 addressBook()
