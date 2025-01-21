@@ -4,14 +4,14 @@
 Book with first and last names, address, 
 city, state, zip, phone number and 
 email…
--UC2: Ability to add a new 
+- UC2: Ability to add a new 
 Contact to Address Book
--UC3: Ability to edit 
+- UC3: Ability to edit 
 existing contact 
 person using their 
 name
--UC4: Ability to delete a 
+- UC4: Ability to delete a 
 person using 
 person's name
--UC5: Ability to add multiple 
+- UC5: Ability to add multiple 
 person to Address Book
