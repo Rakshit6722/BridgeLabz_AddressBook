@@ -47,7 +47,7 @@ const addressBook = () => {
     while (true) {
         console.log("Operations:")
 
-        let opertaionsStr = `0: Get All Contacts \n1: Add Contact \n2: Edit Contact \n3: Delete Contact \n4: Exit`
+        let opertaionsStr = `0: Get All Contacts \n1: Add Contact \n2: Edit Contact \n3: Delete Contact \n4:Add Multiple Contacts \n5: Exit`
 
         console.log(opertaionsStr)
 
@@ -74,6 +74,13 @@ const addressBook = () => {
                 address_book.deleteContact(deleteUsingName())
                 break
             case 4:
+                let noOfContacts: number = parseInt(readLineSync.question("Enter number of contacts you want to add: "))
+                while(noOfContacts){
+                    address_book.addContact(createContact())
+                    noOfContacts--
+                }
+                break
+            case 5:
                 console.log("Exiting...")
                 return
 

@@ -28,11 +28,11 @@ const createContact = () => {
     return newContact;
 };
 const editUsingName = () => {
-    const name = readline_sync_1.default.question("Find contact by entering first name");
+    const name = readline_sync_1.default.question("Find contact by entering first name: ");
     return name.toLowerCase();
 };
 const deleteUsingName = () => {
-    const name = readline_sync_1.default.question("Find contact by entering first name");
+    const name = readline_sync_1.default.question("Find contact by entering first name: ");
     return name.toLowerCase();
 };
 const addressBook = () => {
@@ -40,7 +40,7 @@ const addressBook = () => {
     console.log("<-------------ADDRESS BOOK--------------->");
     while (true) {
         console.log("Operations:");
-        let opertaionsStr = `0: Get All Contacts \n1: Add Contact \n2: Edit Contact \n3: Delete Contact \n4: Exit`;
+        let opertaionsStr = `0: Get All Contacts \n1: Add Contact \n2: Edit Contact \n3: Delete Contact \n4:Add Multiple Contacts \n5: Exit`;
         console.log(opertaionsStr);
         const operation = parseInt(readline_sync_1.default.question("Choose:"));
         switch (operation) {
@@ -65,6 +65,13 @@ const addressBook = () => {
                 address_book.deleteContact(deleteUsingName());
                 break;
             case 4:
+                let noOfContacts = parseInt(readline_sync_1.default.question("Enter number of contacts you want to add: "));
+                while (noOfContacts) {
+                    address_book.addContact(createContact());
+                    noOfContacts--;
+                }
+                break;
+            case 5:
                 console.log("Exiting...");
                 return;
             default:

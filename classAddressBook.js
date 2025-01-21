@@ -13,7 +13,7 @@ class AddressBook {
     }
     addContact(contact) {
         this.addressBook.push(contact);
-        console.log("Contact added successfully\n");
+        console.log("Contact saved!\n");
     }
     editContact(firstname) {
         let foundObj = this.addressBook.filter(item => item.firstname === firstname);
@@ -50,7 +50,12 @@ class AddressBook {
         }
     }
     deleteContact(firstname) {
+        let beforeLength = this.addressBook.length;
         this.addressBook = this.addressBook.filter(item => item.firstname !== firstname);
+        if (beforeLength !== this.addressBook.length)
+            console.log("Contact deleted successfully");
+        else
+            console.log("No contact with this name found!");
     }
 }
 exports.default = AddressBook;

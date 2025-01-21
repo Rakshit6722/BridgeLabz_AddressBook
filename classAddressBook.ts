@@ -25,7 +25,7 @@ class AddressBook{
 
     addContact(contact: Contact){
         this.addressBook.push(contact)
-        console.log("Contact added successfully\n")
+        console.log("Contact saved!\n")
     }
 
     
@@ -58,8 +58,10 @@ class AddressBook{
     }
 
     deleteContact(firstname: string){
+        let beforeLength = this.addressBook.length
         this.addressBook = this.addressBook.filter(item => item.firstname !== firstname)
-        console.log("Contact deleted successfully")
+        if(beforeLength !== this.addressBook.length) console.log("Contact deleted successfully")
+        else console.log("No contact with this name found!")
     }
 
 
