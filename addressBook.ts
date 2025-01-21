@@ -28,10 +28,7 @@ const createContact = ():Contact => {
     return newContact
 }
 
-const editUsingName = () => {
-    const name: string = readLineSync.question("Find contact by entering first name")
-    return name
-}
+
 
 const addressBook = () => {
 
@@ -52,13 +49,7 @@ const addressBook = () => {
         case 1:
             address_book.addContact(createContact())
             break
-        case 2:
-            address_book.editContact(editUsingName())
-            console.log(address_book.getAllContacts())
-            break
-        case 3:
-            console.log("Exiting...")
-            return
+
         default:
     }
     }
