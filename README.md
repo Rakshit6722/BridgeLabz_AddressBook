@@ -6,3 +6,7 @@ city, state, zip, phone number and
 email…
 -UC2: Ability to add a new 
 Contact to Address Book
+-UC3: Ability to edit 
+existing contact 
+person using their 
+name
