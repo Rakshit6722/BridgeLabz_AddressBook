@@ -31,3 +31,6 @@ by City or State
 - UC10: get number 
 of contact persons i.e. 
 count by City or State
+- UC11: sort the entries in the 
+address book alphabetically by 
+Person’s name
