@@ -85,7 +85,7 @@ const runAddressBookSystem = () => {
     console.log("<-------------ADDRESS BOOK--------------->");
     const addressBookManager = new classAddressBook_1.AddressBookManager();
     while (true) {
-        const optionString = `1: Add new address book \n2: Get all address books \n3: Select an address book by name \n4: Exit`;
+        const optionString = `1: Add new address book \n2: Get all address books \n3: Select an address book by name \n4: search Person in a City or State across the multiple Address Book \n5: Exit`;
         console.log(optionString);
         const choice = parseInt(readline_sync_1.default.question("Choose: "));
         switch (choice) {
@@ -115,6 +115,16 @@ const runAddressBookSystem = () => {
                 }
                 break;
             case 4:
+                const personName = readline_sync_1.default.question("Enter name: ");
+                const cityOrState = readline_sync_1.default.question("Enter city or state: ");
+                const foundPerson = addressBookManager.searchPersonInACityOrState(personName, cityOrState);
+                if (foundPerson) {
+                    foundPerson.forEach((item) => {
+                        console.log(item);
+                    });
+                }
+                break;
+            case 5:
                 console.log("Exiting...");
                 return;
         }

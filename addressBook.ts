@@ -39,8 +39,6 @@ const deleteUsingName = () => {
 
 const addressBook = (address_book: AddressBook) => {
 
-
-
     while (true) {
         console.log("Operations:")
 
@@ -98,7 +96,7 @@ const runAddressBookSystem = () => {
     const addressBookManager = new AddressBookManager()
 
     while(true){
-        const optionString: string = `1: Add new address book \n2: Get all address books \n3: Select an address book by name \n4: Exit`
+        const optionString: string = `1: Add new address book \n2: Get all address books \n3: Select an address book by name \n4: search Person in a City or State across the multiple Address Book \n5: Exit`
     
         console.log(optionString)
     
@@ -130,6 +128,16 @@ const runAddressBookSystem = () => {
                 }
                 break;
             case 4:
+                const personName = readLineSync.question("Enter name: ")
+                const cityOrState = readLineSync.question("Enter city or state: ")
+                const foundPerson = addressBookManager.searchPersonInACityOrState(personName, cityOrState)
+                if(foundPerson){
+                    foundPerson.forEach((item: any) => {
+                        console.log(item)
+                    })
+                }
+                break;
+            case 5:
                 console.log("Exiting...") 
                 return
         }

@@ -110,6 +110,18 @@ export class AddressBookManager{
             console.log("No address book found with this name")
         }
     }
+
+    searchPersonInACityOrState(personName: string, cityOrState: string): any{
+        const allContactsAccrossAddressBook = this.manager.flatMap(item => item.data.getAllContacts())
+        // console.log(allContactsAccrossAddressBook)
+        const foundPerson = allContactsAccrossAddressBook.filter(item => item.firstname === personName.toLowerCase() && (item.city === cityOrState || item.state === cityOrState))
+        if(foundPerson.length !== 0){
+            console.log("Person found!")
+            return foundPerson
+        }else{
+            console.log("Person not found!")
+        }
+    }
 }
 
 export default AddressBook
