@@ -122,6 +122,12 @@ export class AddressBookManager{
             console.log("Person not found!")
         }
     }
+
+    countByCityOrState(cityOrState: string): number{
+        const allContactsAccrossAddressBook = this.manager.flatMap(item => item.data.getAllContacts())
+        const foundPerson = allContactsAccrossAddressBook.filter(item => item.city === cityOrState || item.state === cityOrState)
+        return foundPerson.length
+    }
 }
 
 export default AddressBook

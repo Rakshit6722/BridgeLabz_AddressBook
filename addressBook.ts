@@ -96,7 +96,7 @@ const runAddressBookSystem = () => {
     const addressBookManager = new AddressBookManager()
 
     while(true){
-        const optionString: string = `1: Add new address book \n2: Get all address books \n3: Select an address book by name \n4: search Person in a City or State across the multiple Address Book \n5: Exit`
+        const optionString: string = `1: Add new address book \n2: Get all address books \n3: Select an address book by name \n4: search Person in a City or State across the multiple Address Book \n5: get number of contact persons i.e. count by City or State \n6: Exit`
     
         console.log(optionString)
     
@@ -138,6 +138,11 @@ const runAddressBookSystem = () => {
                 }
                 break;
             case 5:
+                const city_or_state = readLineSync.question("Enter city or state: ")
+                const count = addressBookManager.countByCityOrState(city_or_state)
+                console.log(`Count: ${count}`)
+                break;
+            case 6:
                 console.log("Exiting...") 
                 return
         }

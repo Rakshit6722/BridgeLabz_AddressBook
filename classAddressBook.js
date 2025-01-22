@@ -95,9 +95,8 @@ class AddressBookManager {
     }
     searchPersonInACityOrState(personName, cityOrState) {
         const allContactsAccrossAddressBook = this.manager.flatMap(item => item.data.getAllContacts());
-        console.log(allContactsAccrossAddressBook);
+        // console.log(allContactsAccrossAddressBook)
         const foundPerson = allContactsAccrossAddressBook.filter(item => item.firstname === personName.toLowerCase() && (item.city === cityOrState || item.state === cityOrState));
-        console.log("Found Person: ", foundPerson);
         if (foundPerson.length !== 0) {
             console.log("Person found!");
             return foundPerson;
@@ -105,6 +104,11 @@ class AddressBookManager {
         else {
             console.log("Person not found!");
         }
+    }
+    countByCityOrState(cityOrState) {
+        const allContactsAccrossAddressBook = this.manager.flatMap(item => item.data.getAllContacts());
+        const foundPerson = allContactsAccrossAddressBook.filter(item => item.city === cityOrState || item.state === cityOrState);
+        return foundPerson.length;
     }
 }
 exports.AddressBookManager = AddressBookManager;
