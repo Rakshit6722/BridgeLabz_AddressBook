@@ -37,7 +37,7 @@ const deleteUsingName = () => {
 const addressBook = (address_book) => {
     while (true) {
         console.log("Operations:");
-        let opertaionsStr = `0: Get All Contacts \n1: Add Contact \n2: Edit Contact \n3: Delete Contact \n4:Add Multiple Contacts \n5: sort the entries in the address book alphabetically by Person’s name \n6: Exit`;
+        let opertaionsStr = `0: Get All Contacts \n1: Add Contact \n2: Edit Contact \n3: Delete Contact \n4: Add Multiple Contacts \n5: sort the entries in the address book alphabetically by Person’s name  \n6: sort the entries in the address book by City, State, or Zip \n7: Exit`;
         console.log(opertaionsStr);
         const operation = parseInt(readline_sync_1.default.question("Choose:"));
         switch (operation) {
@@ -76,10 +76,16 @@ const addressBook = (address_book) => {
                 break;
             case 5:
                 address_book.sortByName();
+                break;
             case 6:
+                const parameter = readline_sync_1.default.question("Enter parameter: ").toLowerCase();
+                address_book.sortByParameter(parameter);
+                break;
+            case 7:
                 console.log("Exiting...");
                 return;
             default:
+                console.log("Invalid choice!");
         }
     }
 };
@@ -92,7 +98,7 @@ const runAddressBookSystem = () => {
         const choice = parseInt(readline_sync_1.default.question("Choose: "));
         switch (choice) {
             case 1:
-                const name = readline_sync_1.default.question("Enter address book name");
+                const name = readline_sync_1.default.question("Enter address book name: ");
                 addressBookManager.addAddressBook(name);
             case 2:
                 const allAddressBook = addressBookManager.getAllAddressBook();
@@ -134,6 +140,8 @@ const runAddressBookSystem = () => {
             case 6:
                 console.log("Exiting...");
                 return;
+            default:
+                console.log("Invalid choice!");
         }
     }
 };

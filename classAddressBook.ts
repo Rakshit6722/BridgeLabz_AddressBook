@@ -80,6 +80,15 @@ class AddressBook{
         console.log(this.addressBook)
     }
 
+    sortByParameter(parameter: string){
+        if(parameter === 'zip' || parameter === 'city' || parameter === 'state'){
+            this.addressBook.sort((a, b) => (a[parameter as keyof Contact] as string).localeCompare(b[parameter as keyof Contact] as string))
+            console.log(`Contacts sorted by ${parameter}!`)
+            console.log(this.addressBook)
+        }else{
+            console.log("Invalid parameter!")
+        }
+    }
 
 }
 

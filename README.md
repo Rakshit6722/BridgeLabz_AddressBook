@@ -34,3 +34,6 @@ count by City or State
 - UC11: sort the entries in the 
 address book alphabetically by 
 Person’s name
+- UC12: Ability to sort the entries in 
+the address book by City, 
+State, or Zip

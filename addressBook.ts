@@ -42,7 +42,7 @@ const addressBook = (address_book: AddressBook) => {
     while (true) {
         console.log("Operations:")
 
-        let opertaionsStr = `0: Get All Contacts \n1: Add Contact \n2: Edit Contact \n3: Delete Contact \n4:Add Multiple Contacts \n5: sort the entries in the address book alphabetically by Person’s name \n6: Exit`
+        let opertaionsStr = `0: Get All Contacts \n1: Add Contact \n2: Edit Contact \n3: Delete Contact \n4: Add Multiple Contacts \n5: sort the entries in the address book alphabetically by Person’s name  \n6: sort the entries in the address book by City, State, or Zip \n7: Exit`
 
         console.log(opertaionsStr)
 
@@ -85,6 +85,10 @@ const addressBook = (address_book: AddressBook) => {
                 address_book.sortByName()
                 break
             case 6:
+                const parameter = readLineSync.question("Enter parameter: ").toLowerCase()
+                address_book.sortByParameter(parameter)
+                break
+            case 7:
                 console.log("Exiting...")
                 return
             default:
@@ -108,8 +112,9 @@ const runAddressBookSystem = () => {
     
         switch(choice){
             case 1:
-                const name: string = readLineSync.question("Enter address book name")
+                const name: string = readLineSync.question("Enter address book name: ")
                 addressBookManager.addAddressBook(name)
+                break;
             case 2:
                 const allAddressBook = addressBookManager.getAllAddressBook()
                 console.log("Address Books:")

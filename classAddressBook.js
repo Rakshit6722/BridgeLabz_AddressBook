@@ -68,6 +68,16 @@ class AddressBook {
         console.log("Contacts sorted by name!");
         console.log(this.addressBook);
     }
+    sortByParameter(parameter) {
+        if (parameter === 'zip' || parameter === 'city' || parameter === 'state') {
+            this.addressBook.sort((a, b) => a[parameter].localeCompare(b[parameter]));
+            console.log(`Contacts sorted by ${parameter}!`);
+            console.log(this.addressBook);
+        }
+        else {
+            console.log("Invalid parameter!");
+        }
+    }
 }
 class AddressBookManager {
     constructor() {
