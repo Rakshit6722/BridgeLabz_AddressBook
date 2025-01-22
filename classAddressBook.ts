@@ -11,6 +11,11 @@ export interface Contact{
     email: string;
 }
 
+interface AddresskManager{
+    name: String;
+    data: AddressBook | any;
+}
+
 class AddressBook{
 
     private addressBook: Contact[]
@@ -65,6 +70,32 @@ class AddressBook{
     }
 
 
+}
+
+export class AddressBookManager{
+    private manager: AddresskManager[]
+
+    constructor(){
+        this.manager = []
+    }
+
+    addAddressBook(name: string){
+        let findName = this.manager.filter(item => item.name === name)
+        if(!findName){
+            this.manager.push({
+                name,
+                data: []
+            })
+    
+            console.log("Address Book Saved!")
+        }else{
+            console.log("Name already taken!")
+        }
+    }
+
+    getAllAddressBook(): AddresskManager[]{
+        return this.manager
+    }
 }
 
 export default AddressBook

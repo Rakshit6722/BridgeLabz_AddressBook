@@ -47,11 +47,17 @@ const addressBook = () => {
             case 0:
                 const contacts = address_book.getAllContacts();
                 if (contacts.length > 0) {
-                    console.log(contacts);
+                    console.log("All Contacts:");
+                    contacts.forEach((contact, idx) => {
+                        let formattedContact = `Contact ${idx + 1}:\n Firstname: ${contact.firstname}\n Lastname: ${contact.lastname}\n Address: ${contact.address}\n City: ${contact.city}\n State: ${contact.state}\n ZIP: ${contact.zip}\n Phone Number: ${contact.phoneNumber}\n Email: ${contact.email}\n`;
+                        console.log(formattedContact);
+                    });
+                    console.log('--------------------------------');
                     break;
                 }
                 else {
                     console.log("No contacts found!\n");
+                    console.log('--------------------------------');
                     break;
                 }
             case 1:
