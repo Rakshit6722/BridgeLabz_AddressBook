@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddressBookManager = void 0;
 const readline_sync_1 = __importDefault(require("readline-sync"));
+const fs_1 = __importDefault(require("fs"));
 class AddressBook {
     constructor() {
         this.addressBook = [];
@@ -77,6 +78,14 @@ class AddressBook {
         else {
             console.log("Invalid parameter!");
         }
+    }
+    getCountByCityOrState(cityOrState) {
+        const foundPerson = this.addressBook.filter(item => item.city === cityOrState || item.state === cityOrState);
+        return foundPerson.length;
+    }
+    saveAddressBook() {
+        fs_1.default.writeFileSync('addressBook.json', JSON.stringify(this.addressBook));
+        console.log("Address Book saved!");
     }
 }
 class AddressBookManager {

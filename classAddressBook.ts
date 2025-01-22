@@ -1,4 +1,5 @@
 import readLineSync from 'readline-sync';
+import fs from 'fs';
 
 export interface Contact{
     firstname: string;
@@ -90,6 +91,16 @@ class AddressBook{
         }
     }
 
+    getCountByCityOrState(cityOrState: string): number{
+        const foundPerson = this.addressBook.filter(item => item.city === cityOrState || item.state === cityOrState)
+        return foundPerson.length
+    }
+    
+    saveAddressBook(){
+        fs.writeFileSync('addressBook.json', JSON.stringify(this.addressBook))
+        console.log("Address Book saved!")
+    }
+
 }
 
 export class AddressBookManager{
@@ -143,6 +154,7 @@ export class AddressBookManager{
         const foundPerson = allContactsAccrossAddressBook.filter(item => item.city === cityOrState || item.state === cityOrState)
         return foundPerson.length
     }
+
 }
 
 export default AddressBook
