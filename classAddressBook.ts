@@ -12,7 +12,7 @@ export interface Contact{
 }
 
 interface AddresskManager{
-    name: String;
+    name: string;
     data: AddressBook | any;
 }
 
@@ -72,6 +72,12 @@ class AddressBook{
         this.addressBook = this.addressBook.filter(item => item.firstname !== firstname)
         if(beforeLength !== this.addressBook.length) console.log("Contact deleted successfully")
         else console.log("No contact with this name found!")
+    }
+
+    sortByName(){
+        this.addressBook.sort((a,b) => a.firstname.localeCompare(b.firstname))
+        console.log("Contacts sorted by name!")
+        console.log(this.addressBook)
     }
 
 

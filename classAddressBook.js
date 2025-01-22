@@ -63,6 +63,11 @@ class AddressBook {
         else
             console.log("No contact with this name found!");
     }
+    sortByName() {
+        this.addressBook.sort((a, b) => a.firstname.localeCompare(b.firstname));
+        console.log("Contacts sorted by name!");
+        console.log(this.addressBook);
+    }
 }
 class AddressBookManager {
     constructor() {
