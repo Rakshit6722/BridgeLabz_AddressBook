@@ -26,3 +26,5 @@ Address Book
 in a City or State across 
 the multiple Address 
 Book 
+- UC9:Ability to view Persons 
+by City or State
