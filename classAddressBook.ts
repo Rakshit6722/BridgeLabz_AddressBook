@@ -29,6 +29,11 @@ class AddressBook{
     }
 
     addContact(contact: Contact){
+        const duplicateContact = this.addressBook.filter(item => item.firstname === contact.firstname && item.lastname === contact.lastname)
+        if(duplicateContact[0]){
+            console.log("Contact with the same name already exist!")
+            return
+        }
         this.addressBook.push(contact)
         console.log("Contact saved!\n")
     }

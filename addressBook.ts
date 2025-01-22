@@ -3,7 +3,6 @@ import { AddressBookManager } from './classAddressBook';
 import AddressBook from './classAddressBook';
 import { Contact } from './classAddressBook';
 
-//UC1 - ability to create a new contact
 const createContact = (): Contact => {
     const firstname: string = readLineSync.question("Enter firstname: ").toLowerCase()
     const lastname: string = readLineSync.question("Enter lastname: ").toLowerCase()

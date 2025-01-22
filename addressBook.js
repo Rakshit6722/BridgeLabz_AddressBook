@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const readline_sync_1 = __importDefault(require("readline-sync"));
 const classAddressBook_1 = require("./classAddressBook");
-//UC1 - ability to create a new contact
 const createContact = () => {
     const firstname = readline_sync_1.default.question("Enter firstname: ").toLowerCase();
     const lastname = readline_sync_1.default.question("Enter lastname: ").toLowerCase();
