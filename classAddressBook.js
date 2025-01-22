@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AddressBookManager = void 0;
 const readline_sync_1 = __importDefault(require("readline-sync"));
 class AddressBook {
     constructor() {
@@ -58,4 +59,35 @@ class AddressBook {
             console.log("No contact with this name found!");
     }
 }
+class AddressBookManager {
+    constructor() {
+        this.manager = [];
+    }
+    addAddressBook(name) {
+        let findName = this.manager.filter(item => item.name === name);
+        if (!findName[0]) {
+            this.manager.push({
+                name,
+                data: new AddressBook()
+            });
+            console.log("Address Book Saved!");
+        }
+        else {
+            console.log("Name already taken!");
+        }
+    }
+    getAllAddressBook() {
+        return this.manager;
+    }
+    getAddressBook(name) {
+        const foundAddressBook = this.manager.filter(item => item.name === name);
+        if (foundAddressBook) {
+            return foundAddressBook[0];
+        }
+        else {
+            console.log("No address book found with this name");
+        }
+    }
+}
+exports.AddressBookManager = AddressBookManager;
 exports.default = AddressBook;

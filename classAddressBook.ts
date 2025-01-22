@@ -81,10 +81,10 @@ export class AddressBookManager{
 
     addAddressBook(name: string){
         let findName = this.manager.filter(item => item.name === name)
-        if(!findName){
+        if(!findName[0]){
             this.manager.push({
                 name,
-                data: []
+                data: new AddressBook()
             })
     
             console.log("Address Book Saved!")
@@ -95,6 +95,15 @@ export class AddressBookManager{
 
     getAllAddressBook(): AddresskManager[]{
         return this.manager
+    }
+
+    getAddressBook(name: string): AddresskManager | void{
+        const foundAddressBook = this.manager.filter(item => item.name === name)
+        if(foundAddressBook){
+            return foundAddressBook[0]
+        }else{
+            console.log("No address book found with this name")
+        }
     }
 }
 

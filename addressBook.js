@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const readline_sync_1 = __importDefault(require("readline-sync"));
-const classAddressBook_1 = __importDefault(require("./classAddressBook"));
+const classAddressBook_1 = require("./classAddressBook");
 //UC1 - ability to create a new contact
 const createContact = () => {
     const firstname = readline_sync_1.default.question("Enter firstname: ").toLowerCase();
@@ -35,9 +35,7 @@ const deleteUsingName = () => {
     const name = readline_sync_1.default.question("Find contact by entering first name: ");
     return name.toLowerCase();
 };
-const addressBook = () => {
-    let address_book = new classAddressBook_1.default();
-    console.log("<-------------ADDRESS BOOK--------------->");
+const addressBook = (address_book) => {
     while (true) {
         console.log("Operations:");
         let opertaionsStr = `0: Get All Contacts \n1: Add Contact \n2: Edit Contact \n3: Delete Contact \n4:Add Multiple Contacts \n5: Exit`;
@@ -84,4 +82,43 @@ const addressBook = () => {
         }
     }
 };
-addressBook();
+const runAddressBookSystem = () => {
+    console.log("<-------------ADDRESS BOOK--------------->");
+    const addressBookManager = new classAddressBook_1.AddressBookManager();
+    while (true) {
+        const optionString = `1: Add new address book \n2: Get all address books \n3: Select an address book by name \n4: Exit`;
+        console.log(optionString);
+        const choice = parseInt(readline_sync_1.default.question("Choose: "));
+        switch (choice) {
+            case 1:
+                const name = readline_sync_1.default.question("Enter address book name");
+                addressBookManager.addAddressBook(name);
+            case 2:
+                const allAddressBook = addressBookManager.getAllAddressBook();
+                console.log("Address Books:");
+                if (allAddressBook.length > 0) {
+                    allAddressBook.forEach((item) => {
+                        console.log(item.name);
+                    });
+                }
+                else {
+                    console.log("No address book found!");
+                }
+                break;
+            case 3:
+                const selectName = readline_sync_1.default.question("Enter name: ");
+                const selectAddressBook = addressBookManager.getAddressBook(selectName);
+                if (selectAddressBook) {
+                    addressBook(selectAddressBook.data);
+                }
+                else {
+                    "No address book fount with that name";
+                }
+                break;
+            case 4:
+                console.log("Exiting...");
+                return;
+        }
+    }
+};
+runAddressBookSystem();

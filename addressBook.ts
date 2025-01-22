@@ -93,11 +93,51 @@ const addressBook = (address_book: AddressBook) => {
     }
 }
 
-// const runAddressBookSystem = () => {
-//     console.log("<-------------ADDRESS BOOK--------------->")
 
-//     const 
-// }
+const runAddressBookSystem = () => {
+    console.log("<-------------ADDRESS BOOK--------------->")
+    const addressBookManager = new AddressBookManager()
+
+    while(true){
+        const optionString: string = `1: Add new address book \n2: Get all address books \n3: Select an address book by name \n4: Exit`
+    
+        console.log(optionString)
+    
+        const choice: number = parseInt(readLineSync.question("Choose: "))
+    
+    
+        switch(choice){
+            case 1:
+                const name: string = readLineSync.question("Enter address book name")
+                addressBookManager.addAddressBook(name)
+            case 2:
+                const allAddressBook = addressBookManager.getAllAddressBook()
+                console.log("Address Books:")
+                if(allAddressBook.length>0){
+                    allAddressBook.forEach((item)=>{
+                        console.log(item.name)
+                    })
+                }else{
+                    console.log("No address book found!")
+                }
+                break;
+            case 3:
+                const selectName: string = readLineSync.question("Enter name: ")
+                const selectAddressBook = addressBookManager.getAddressBook(selectName)
+                if(selectAddressBook){
+                    addressBook(selectAddressBook.data)
+                }else{
+                    "No address book fount with that name"
+                }
+                break;
+            case 4:
+                console.log("Exiting...") 
+                return
+        }
+    }
+}
+
+runAddressBookSystem()
 
 
 
